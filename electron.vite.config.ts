@@ -12,13 +12,13 @@ export default defineConfig({
   main: {
     build: {
       outDir: 'dist/main',
-      rolldownOptions: { external, output: { format: 'cjs', entryFileNames: 'index.cjs' } },
+      rollupOptions: { external, output: { format: 'cjs', entryFileNames: 'index.cjs' } },
     },
   },
   preload: {
     build: {
       outDir: 'dist/preload',
-      rolldownOptions: { external, output: { format: 'cjs', entryFileNames: 'index.cjs' } },
+      rollupOptions: { external, output: { format: 'cjs', entryFileNames: 'index.cjs' } },
     },
   },
   renderer: {
