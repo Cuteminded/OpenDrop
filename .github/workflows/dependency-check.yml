@@ -1,0 +1,30 @@
+name: Dependency check
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dependencies:
+    name: Dependency compatibility
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies with strict peer validation
+        run: npm ci --strict-peer-deps --legacy-peer-deps=false --force=false
+      - name: Check dependency requirements
+        run: npm ls --all
+      - name: Install Electron runtime
+        run: npx --no-install install-electron
+      - name: Typecheck, test and build
+        run: npm run check
+      - name: Desktop smoke test
+        run: xvfb-run --auto-servernum npm run test:ui
