@@ -101,8 +101,8 @@ a SHA-256 checksum, OpenDrop verifies it before inspecting the build.
 The packaged app registers its own URL scheme:
 
 ```text
-opendrop://install?manifest=https%3A%2F%2Fexample.com%2Fmy-game.json
-opendrop://install?url=https%3A%2F%2Fexample.com%2Fmy-game.apk
+opendrop://install?manifest=https://example.com/my-game.json
+opendrop://install?url=https://example.com/my-game-arm64.apk
 ```
 
 Open a link to see the download dialog, then download the build for review.
@@ -151,10 +151,10 @@ computer.
 ## Development and builds
 
 ```sh
-npm run check       # TypeScript checks, automated tests, production build
-npm run test:ui     # Launch and test the built Electron app
+npm run check          # TypeScript checks, automated tests, production build
+npm run test:ui        # Launch and test the built Electron app
 npm run test:interface # Check layout, themes, keyboard flow and interface states
-npm run package     # Build an installer for the current operating system
+npm run package        # Build an installer for the current operating system
 ```
 
 The UI tests need a graphical session. On headless Linux, use
